@@ -9,7 +9,7 @@ const getToken = async () => {
   const res = await axios.post(process.env.PUBLIC_API_URL, {
     studentId: process.env.STUDENT_ID,
     password: process.env.STUDENT_PASSWORD,
-    set: process.env.SET,
+    set: "setA",
   });
   return res.data.token;
 };
