@@ -1,0 +1,10 @@
+const express = require("express");
+const { create, getAll, getById, update, remove } = require("../controllers/applicationController");
+const { protect } = require("../middleware/auth");
+const router = express.Router();
+router.post("/", protect, create);
+router.get("/", getAll);
+router.get("/:id", getById);
+router.patch("/:id", protect, update);
+router.delete("/:id", protect, remove);
+module.exports = router;

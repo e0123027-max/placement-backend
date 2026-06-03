@@ -1,0 +1,10 @@
+const express = require("express");
+const { create, getAll, getById, update, remove } = require("../controllers/companyController");
+const { protect, allowRoles } = require("../middleware/auth");
+const router = express.Router();
+router.post("/", protect, allowRoles("admin", "placement_officer"), create);
+router.get("/", getAll);
+router.get("/:id", getById);
+router.patch("/:id", protect, allowRoles("admin", "placement_officer"), update);
+router.delete("/:id", protect, allowRoles("admin", "placement_officer"), remove);
+module.exports = router;
